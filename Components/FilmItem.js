@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import { getImageFromApi } from '../API/TMDBApi'; // import { } from ... car c'est un export nommé dans TMDBApi.js
 
 class FilmItem extends React.Component {
   render(){
     const film = this.props.film
     return (
       <View style={styles.main_container}>
-        <Image style={styles.image} source={{uri: "image"}}/>
+        <Image style={styles.image} source={{uri: getImageFromApi(film.poster_path)}}/>
         <View style={styles.main_content}>
           <View style={styles.header_container}>
             <Text style={styles.title_text}>{film.title}</Text>
@@ -37,8 +38,7 @@ const styles = StyleSheet.create({
     image:{
       width: 120,
       height: 180,
-      margin: 5,
-      backgroundColor: 'gray'
+      margin: 5
     },
     header_container:{
       flexDirection: 'row',
